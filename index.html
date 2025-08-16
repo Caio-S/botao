@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botão Fujão</title>
+    <style>
+        /* Estilos gerais para centralizar tudo */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        /* O container dos nossos botões */
+        .container {
+            text-align: center;
+            padding: 40px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        /* Estilo dos botões */
+        .botao {
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+            margin: 10px;
+            transition: background-color 0.3s;
+        }
+
+        /* Botão correto (verde) */
+        #botao-sim {
+            background-color: #28a745;
+        }
+
+        #botao-sim:hover {
+            background-color: #218838;
+        }
+
+        /* Botão fujão (vermelho) */
+        #botao-nao {
+            background-color: #dc3545;
+            
+            position: absolute; 
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Me contrata porra!</h1>
+        <button class="botao" id="botao-sim" onclick="alert('Parabéns! Você fez a escolha certa!')">Sim!</button>
+        <button class="botao" id="botao-nao">Não</button>
+    </div>
+
+    <script>
+        // Pega o elemento do botão "Não"
+        const botaoNao = document.getElementById('botao-nao');
+
+        // Adiciona o "ouvinte" de evento para quando o mouse entrar na área do botão
+        botaoNao.addEventListener('mouseover', () => {
+            // Pega a largura e altura da janela
+            const larguraJanela = window.innerWidth;
+            const alturaJanela = window.innerHeight;
+
+            // Pega as dimensões do botão
+            const larguraBotao = botaoNao.offsetWidth;
+            const alturaBotao = botaoNao.offsetHeight;
+
+            // Calcula uma posição aleatória, garantindo que o botão não saia da tela
+            const novaPosicaoX = Math.floor(Math.random() * (larguraJanela - larguraBotao));
+            const novaPosicaoY = Math.floor(Math.random() * (alturaJanela - alturaBotao));
+
+            // Aplica a nova posição ao estilo do botão
+            botaoNao.style.left = `${novaPosicaoX}px`;
+            botaoNao.style.top = `${novaPosicaoY}px`;
+        });
+    </script>
+
+</body>
+</html>
